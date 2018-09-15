@@ -21,5 +21,11 @@ def scraper():
     mars.update({}, mars_data, upsert=True)
     return redirect("/", code=302)
 
+@app.route("/pictures")
+def pictures():
+    mars = mongo.db.mars.find_one()
+    return render_template("pictures.html", mars=mars)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
